@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FoodShazam – AI Food Recognition & Nutrition Tracker</title>
+  <meta name="description" content="Instantly identify food, count calories, and get nutritional data by simply taking a photo. Powered by advanced AI."/>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"/>
+  
+  <!-- AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2262262449697144" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --green: #1a9a4a;
+      --green-dark: #0f6b32;
+      --green-light: #e8f7ef;
+      --accent: #ff6b35;
+      --bg: #f7faf8;
+      --white: #ffffff;
+      --text: #1a1a1a;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --card-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+    }
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--green);
+      letter-spacing: -0.5px;
+      text-decoration: none;
+    }
+    .logo span { color: var(--accent); }
+    nav ul { list-style: none; display: flex; gap: 24px; align-items: center; }
+    nav ul a { text-decoration: none; color: var(--muted); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+    nav ul a:hover { color: var(--green); }
+    .nav-cta {
+      background: var(--green);
+      color: white !important;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
+      color: white;
+      text-align: center;
+      padding: 100px 24px;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 800;
+      margin-bottom: 20px;
+      line-height: 1;
+    }
+    .hero h1 span { color: #4ade80; }
+    .hero p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto 40px;
+    }
+    .hero-btn {
+      background: var(--white);
+      color: var(--green-dark);
+      padding: 18px 36px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 1.1rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .hero-btn:hover { transform: scale(1.05); }
+
+    /* Features Section */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 20px;
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .section-header h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+    .section-header p {
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .feature-card {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: var(--card-shadow);
+      border: 1px solid var(--border);
+    }
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .feature-card h3 {
+      font-family: 'Syne', sans-serif;
+      margin-bottom: 12px;
+    }
+    .feature-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* Ad Break */
+    .ad-section {
+      background: white;
+      border: 2px dashed var(--border);
+      border-radius: 24px;
+      padding: 40px;
+      text-align: center;
+      margin: 60px 0;
+    }
+
+    /* Blog Preview */
+    .blog-preview {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .blog-item {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid var(--border);
+    }
+    .blog-item-img {
+      height: 160px;
+      background: var(--green-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+    }
+    .blog-item-body { padding: 24px; }
+    .blog-item-body h4 { font-family: 'Syne', sans-serif; margin-bottom: 10px; }
+    .blog-item-body p { color: var(--muted); font-size: 0.9rem; }
+
+    /* Footer */
+    footer {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      padding: 80px 24px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--green);
+      text-decoration: none;
+      margin-bottom: 30px;
+      display: block;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .footer-links a:hover { color: var(--green); }
+    .copyright { color: var(--muted); font-size: 0.9rem; }
+
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .hero { padding: 60px 20px; }
+      .hero h1 { font-size: 2.8rem; }
+      .footer-links { gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">Food<span>Shazam</span></a>
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog.html" class="nav-cta">Read Blog</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-badge">🤖 AI-Powered Nutrition</div>
+    <h1>Snap a photo.<br><span>Know your food.</span></h1>
+    <p>The easiest way to track your nutrition. Simply take a photo of your meal and let our AI do the rest.</p>
+    <a href="blog.html" class="hero-btn">Explore the Blog &rarr;</a>
+  </div>
+
+  <div class="container">
+    
+    <div class="section-header">
+      <h2>Why FoodShazam?</h2>
+      <p>Empowering you to make smarter food choices every single day.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">🧠</span>
+        <h3>AI Recognition</h3>
+        <p>Instantly identify thousands of dishes and ingredients from a single photo.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🥗</span>
+        <h3>Nutrition Data</h3>
+        <p>Get accurate calorie counts, macronutrients, and vitamin breakdowns automatically.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📈</span>
+        <h3>Goal Tracking</h3>
+        <p>Monitor your daily intake and stay on track with your weight and fitness goals.</p>
+      </div>
+    </div>
+
+    <!-- Ad Break -->
+    <div class="ad-section">
+      <div style="font-size: 0.7rem; color: #9ca3af; margin-bottom: 10px; text-transform: uppercase;">Advertisement</div>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2262262449697144"
+           data-ad-slot="1234567890"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="section-header">
+      <h2>Latest from the Blog</h2>
+      <p>Expert tips on nutrition, AI tech, and healthy living.</p>
+    </div>
+
+    <div class="blog-preview">
+      <a href="blog.html" class="blog-item">
+        <div class="blog-item-img">🥗</div>
+        <div class="blog-item-body">
+          <h4>How AI Counts Calories Automatically</h4>
+          <p>Discover the technology behind image-based food tracking.</p>
+        </div>
+      </a>
+      <a href="blog.html" class="blog-item">
+        <div class="blog-item-img">🔥</div>
+        <div class="blog-item-body">
+          <h4>Understanding Calorie Deficits</h4>
+          <p>The science-backed way to manage weight sustainably.</p>
+        </div>
+      </a>
+      <a href="blog.html" class="blog-item">
+        <div class="blog-item-img">🥩</div>
+        <div class="blog-item-body">
+          <h4>Top 10 High-Protein Foods</h4>
+          <p>Essential sources to power your muscle growth and recovery.</p>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+  <footer>
+    <a href="index.html" class="footer-logo">Food<span>Shazam</span></a>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="blog.html">Blog</a>
+      <a href="about.html">About</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+    <p class="copyright">&copy; 2026 FoodShazam AI. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
