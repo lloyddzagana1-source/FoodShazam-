@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About – Food Shazam</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2262262449697144" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #1a9a4a;
+    --green-dark: #0f6b32;
+    --green-light: #e8f7ef;
+    --accent: #ff6b35;
+    --bg: #f7faf8;
+    --white: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b7280;
+    --card-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); }
+
+  nav {
+    background: var(--white);
+    border-bottom: 1px solid #e5e7eb;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+  }
+  .logo { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; color: var(--green); letter-spacing: -0.5px; text-decoration: none; }
+  .logo span { color: var(--accent); }
+  nav ul { list-style: none; display: flex; gap: 24px; }
+  nav ul a { text-decoration: none; color: var(--muted); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+  nav ul a:hover, nav ul a.active { color: var(--green); }
+  .nav-cta { background: var(--green); color: white !important; padding: 8px 18px; border-radius: 8px; }
+
+  .ad-banner {
+    background: linear-gradient(90deg, #fff8f5, #fff3ee);
+    border-bottom: 1px solid #ffe0d0;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .ad-banner a { color: var(--accent); font-weight: 600; text-decoration: none; }
+
+  .hero {
+    background: linear-gradient(135deg, #0f6b32 0%, #1a9a4a 100%);
+    color: white;
+    text-align: center;
+    padding: 72px 24px;
+  }
+  .hero-emoji { font-size: 4rem; margin-bottom: 16px; }
+  .hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 800; margin-bottom: 12px; }
+  .hero p { opacity: 0.9; font-size: 1.1rem; max-width: 500px; margin: 0 auto; line-height: 1.6; }
+
+  .container { max-width: 760px; margin: 0 auto; padding: 56px 16px; }
+
+  .section { margin-bottom: 56px; }
+  .section h2 { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800; margin-bottom: 16px; color: var(--green-dark); }
+  .section p { color: var(--muted); line-height: 1.75; font-size: 1rem; margin-bottom: 14px; }
+
+  .mission-card {
+    background: var(--green-light);
+    border-left: 4px solid var(--green);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 24px 0;
+  }
+  .mission-card p { color: var(--green-dark); font-weight: 500; font-size: 1.05rem; margin: 0; }
+
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 32px 0; }
+  @media (max-width: 500px) { .stats { grid-template-columns: 1fr; } }
+  .stat-card { background: white; border-radius: 14px; padding: 24px; text-align: center; box-shadow: var(--card-shadow); }
+  .stat-num { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800; color: var(--green); }
+  .stat-label { color: var(--muted); font-size: 0.85rem; margin-top: 4px; }
+
+  .team-card {
+    background: white;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  .team-avatar { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, var(--green), #34c76a); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; flex-shrink: 0; }
+  .team-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 4px; }
+  .team-role { color: var(--green); font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; }
+  .team-bio { color: var(--muted); font-size: 0.88rem; line-height: 1.5; }
+
+  .values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 500px) { .values-grid { grid-template-columns: 1fr; } }
+  .value-card { background: white; border-radius: 14px; padding: 20px; box-shadow: var(--card-shadow); }
+  .value-icon { font-size: 1.8rem; margin-bottom: 10px; }
+  .value-card h3 { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+  .value-card p { color: var(--muted); font-size: 0.85rem; line-height: 1.5; }
+
+  .cta-section {
+    background: linear-gradient(135deg, #0f6b32, #1a9a4a);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    color: white;
+    margin: 40px 0;
+  }
+  .cta-section h2 { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; margin-bottom: 12px; }
+  .cta-section p { opacity: 0.9; margin-bottom: 24px; }
+  .cta-btn {
+    background: white;
+    color: var(--green-dark);
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .cta-btn:hover { transform: translateY(-2px); }
+
+  .ad-unit {
+    background: white;
+    border: 1.5px dashed #e5e7eb;
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+    margin: 40px 0;
+  }
+  .ad-unit-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; color: #9ca3af; }
+
+  footer { background: #0f1f15; color: #9ca3af; text-align: center; padding: 32px 16px; font-size: 0.85rem; }
+  footer a { color: #4ade80; text-decoration: none; }
+  .footer-logo { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800; color: white; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+
+<div class="ad-banner">
+  🍳 Discover amazing recipes — <a href="https://www.hellofresh.com" target="_blank" rel="noopener">Get 60% off your first HelloFresh box →</a>
+</div>
+
+<nav>
+  <a href="index.html" class="logo">Food<span>Shazam</span></a>
+  <ul>
+    <li><a href="index.html">Identify</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="index.html#identify" class="nav-cta">Try Free</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-emoji">🍽️</div>
+  <h1>About Food Shazam</h1>
+  <p>We're on a mission to help everyone understand what they eat — one photo at a time.</p>
+</div>
+
+<div class="container">
+
+  <!-- MISSION -->
+  <div class="section">
+    <h2>Our Mission</h2>
+    <p>Food Shazam was born from a simple idea: you should be able to point your phone at any food and instantly know what it is, what's in it, and how to make it yourself.</p>
+    <div class="mission-card">
+      <p>"We believe that knowledge about food is a right, not a privilege. Our AI puts a world-class nutritionist and chef in everyone's pocket — for free."</p>
+    </div>
+    <p>Whether you're traveling and curious about local cuisine, trying to track your nutrition, or just spotted something delicious on someone else's plate — Food Shazam gives you the answer instantly.</p>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-num">10K+</div>
+      <div class="stat-label">Foods Recognized</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">40+</div>
+      <div class="stat-label">Cuisines Covered</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">Free</div>
+      <div class="stat-label">Always & Forever</div>
+    </div>
+  </div>
+
+  <!-- AD UNIT -->
+  <div class="ad-unit">
+    <div class="ad-unit-label">Advertisement</div>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-2262262449697144"
+         data-ad-slot="auto"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <!-- TEAM -->
+  <div class="section">
+    <h2>Who Built This</h2>
+    <div class="team-card">
+      <div class="team-avatar">👨‍🍳</div>
+      <div>
+        <div class="team-name">Lloyd Dzagana</div>
+        <div class="team-role">Founder & Developer</div>
+        <div class="team-bio">Food lover and developer who built Food Shazam to solve a real problem — not knowing what you're eating. Combining AI with a passion for food to help people eat smarter.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VALUES -->
+  <div class="section">
+    <h2>Our Values</h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">🆓</div>
+        <h3>Free Forever</h3>
+        <p>Core food identification will always be free. No paywalls on basic features.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🔒</div>
+        <h3>Privacy First</h3>
+        <p>Your food photos are never stored or used to train models without consent.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🌍</div>
+        <h3>Global Cuisine</h3>
+        <p>We train on foods from every culture — not just Western foods.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">✅</div>
+        <h3>Accuracy Matters</h3>
+        <p>We constantly improve our AI to give you the most reliable results.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Ready to identify your food?</h2>
+    <p>It's free, instant, and works on any photo.</p>
+    <a href="index.html#identify" class="cta-btn">📸 Try Food Shazam Now</a>
+  </div>
+
+  <!-- DISCLOSURE -->
+  <div class="section">
+    <h2>Affiliate Disclosure</h2>
+    <p>Food Shazam is free to use and supported by affiliate partnerships. When you click links to products like HelloFresh, Amazon, or Instacart, we may earn a small commission at no extra cost to you.</p>
+    <p>We only recommend products and services we genuinely believe add value to your food journey. Your trust matters more than any commission.</p>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">Food<span style="color:#4ade80;">Shazam</span></div>
+  <p>© 2026 Lloyd's Food Shazam · <a href="index.html">Home</a> · <a href="blog.html">Blog</a> · <a href="#">Privacy Policy</a></p>
+  <p style="margin-top:8px;font-size:0.75rem;">This site contains affiliate links. We may earn a commission at no extra cost to you.</p>
+</footer>
+
+</body>
+</html>
