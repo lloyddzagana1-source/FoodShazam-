@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog – FoodShazam | AI Nutrition & Healthy Living</title>
+  <meta name="description" content="Expert articles on nutrition, food recognition, calorie tracking, healthy eating, and AI-powered diet tools."/>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet"/>
+  
+  <!-- AdSense (from existing code) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2262262449697144" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --green: #1a9a4a;
+      --green-dark: #0f6b32;
+      --green-light: #e8f7ef;
+      --accent: #ff6b35;
+      --bg: #f7faf8;
+      --white: #ffffff;
+      --text: #1a1a1a;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --card-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+    }
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--green);
+      letter-spacing: -0.5px;
+      text-decoration: none;
+    }
+    .logo span { color: var(--accent); }
+    nav ul { list-style: none; display: flex; gap: 24px; align-items: center; }
+    nav ul a { text-decoration: none; color: var(--muted); font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
+    nav ul a:hover, nav ul a.active { color: var(--green); }
+    .nav-cta {
+      background: var(--green);
+      color: white !important;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
+      color: white;
+      text-align: center;
+      padding: 80px 24px;
+    }
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Layout */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    /* Article List Styles */
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .article-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 32px;
+    }
+
+    .article-card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      border: 1px solid var(--border);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+    }
+    .article-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    }
+
+    .article-img {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      background: var(--green-light);
+    }
+
+    .article-content {
+      padding: 24px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .article-tag {
+      display: inline-block;
+      background: var(--green-light);
+      color: var(--green);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      align-self: flex-start;
+    }
+
+    .article-card h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.35rem;
+      line-height: 1.3;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .article-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .article-footer {
+      margin-top: auto;
+      font-size: 0.85rem;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+    }
+
+    /* Ad Units */
+    .ad-container {
+      background: white;
+      border: 2px dashed var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      margin: 60px 0;
+    }
+    .ad-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: var(--muted);
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      padding: 60px 24px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--green);
+      text-decoration: none;
+      margin-bottom: 24px;
+      display: block;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .footer-links a:hover { color: var(--green); }
+    .copyright { color: var(--muted); font-size: 0.9rem; }
+
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .hero h1 { font-size: 2.2rem; }
+      .article-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">Food<span>Shazam</span></a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="https://lloyddzagana1-source.github.io/" class="nav-cta">Download App</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <h1>FoodShazam Blog</h1>
+    <p>Your guide to AI-powered nutrition, science-backed healthy eating, and reaching your fitness goals faster.</p>
+  </div>
+
+  <div class="container">
+    
+    <h2 class="section-title">Latest Insights</h2>
+    
+    <div class="article-grid">
+      
+      <!-- Article 1 -->
+      <div class="article-card">
+        <div class="article-img">🥗</div>
+        <div class="article-content">
+          <span class="article-tag">AI & Food</span>
+          <h2>How AI Can Identify Food and Count Calories Automatically</h2>
+          <p>Discover how FoodShazam uses advanced image recognition technology trained on millions of images to instantly estimate your meal's nutritional breakdown.</p>
+          <div class="article-footer">
+            <span>June 1, 2026</span>
+            <strong>Read More &rarr;</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article 2 -->
+      <div class="article-card">
+        <div class="article-img">🔥</div>
+        <div class="article-content">
+          <span class="article-tag">Calories</span>
+          <h2>What Is a Calorie Deficit and How Does It Actually Work?</h2>
+          <p>Understand the fundamental science of weight management and how to calculate your Total Daily Energy Expenditure (TDEE) for sustainable results.</p>
+          <div class="article-footer">
+            <span>May 28, 2026</span>
+            <strong>Read More &rarr;</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article 3 -->
+      <div class="article-card">
+        <div class="article-img">🥩</div>
+        <div class="article-content">
+          <span class="article-tag">Protein</span>
+          <h2>Top 10 High-Protein Foods for Muscle Building and Recovery</h2>
+          <p>From chicken breast to edamame, explore the best sources of protein to power your workouts and support muscle growth.</p>
+          <div class="article-footer">
+            <span>May 24, 2026</span>
+            <strong>Read More &rarr;</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article 4 -->
+      <div class="article-card">
+        <div class="article-img">🥑</div>
+        <div class="article-content">
+          <span class="article-tag">Macronutrients</span>
+          <h2>Understanding Macronutrients: Carbs, Protein, and Fat Explained</h2>
+          <p>Learn how to balance your daily intake of the three main categories of nutrients that provide your body with energy and support health.</p>
+          <div class="article-footer">
+            <span>May 20, 2026</span>
+            <strong>Read More &rarr;</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article 5 -->
+      <div class="article-card">
+        <div class="article-img">🥦</div>
+        <div class="article-content">
+          <span class="article-tag">Weight Loss</span>
+          <h2>Best Foods for Weight Loss in 2026: What the Science Says</h2>
+          <p>Forget the fads. We look at the whole foods that consistently support weight loss by keeping you full and stabilizing blood sugar.</p>
+          <div class="article-footer">
+            <span>May 16, 2026</span>
+            <strong>Read More &rarr;</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article 6 -->
+      <div class="article-card">
+        <div class="article-img">📱</div>
+        <div class="article-content">
+          <span class="article-tag">Meal Planning</span>
+          <h2>How to Track Your Daily Nutrition Without Stress</h2>
+          <p>Stop obsessing and start tracking with ease. Learn how photo-based logging makes nutrition awareness a sustainable habit.</p>
+          <div class="article-footer">
+            <span>May 12, 2026</span>
+            <strong>Read More &rarr;</strong>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Ad Break -->
+    <div class="ad-container">
+      <div class="ad-label">Advertisement</div>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2262262449697144"
+           data-ad-slot="1234567890"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="article-grid">
+      
+      <!-- Article 7 -->
+      <div class="article-card">
+        <div class="article-img">💧</div>
+        <div class="article-content">
+          <span class="article-tag">Water & Health</span>
+          <h2>Why Staying Hydrated Is Just as Important as What You Eat</h2>
+          <p>From brain function to weight management, discover the critical role water plays in your daily performance and wellbeing.</p>
+          <div class="article-footer">
+            <span>May 8, 2026</span>
+            <strong>Read More &rarr;</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article 8 -->
+      <div class="article-card">
+        <div class="article-img">🦠</div>
+        <div class="article-content">
+          <span class="article-tag">Digestion</span>
+          <h2>The Link Between Gut Health and Overall Wellbeing</h2>
+          <p>Explore the microbiome and how the community of trillions of bacteria in your gut influences your immunity and mood.</p>
+          <div class="article-footer">
+            <span>May 4, 2026</span>
+            <strong>Read More &rarr;</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article 9 -->
+      <div class="article-card">
+        <div class="article-img">🍳</div>
+        <div class="article-content">
+          <span class="article-tag">Morning Nutrition</span>
+          <h2>Is Breakfast Really the Most Important Meal of the Day?</h2>
+          <p>We examine the case for and against mandatory breakfast, and what actually matters for your metabolic health.</p>
+          <div class="article-footer">
+            <span>April 30, 2026</span>
+            <strong>Read More &rarr;</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article 10 -->
+      <div class="article-card">
+        <div class="article-img">🍬</div>
+        <div class="article-content">
+          <span class="article-tag">Sugar Awareness</span>
+          <h2>Hidden Sugars in Everyday Foods: What You Need to Know</h2>
+          <p>Pasta sauce, yogurt, and bread often hide shocking amounts of sugar. Learn how to spot them on ingredient labels.</p>
+          <div class="article-footer">
+            <span>April 26, 2026</span>
+            <strong>Read More &rarr;</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article 11 -->
+      <div class="article-card">
+        <div class="article-img">💊</div>
+        <div class="article-content">
+          <span class="article-tag">Micronutrients</span>
+          <h2>The Most Common Nutritional Deficiencies and How to Fix Them</h2>
+          <p>Are you getting enough Iron, Vitamin D, and B12? Learn how to address common gaps through a balanced diet.</p>
+          <div class="article-footer">
+            <span>April 22, 2026</span>
+            <strong>Read More &rarr;</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article 12 -->
+      <div class="article-card">
+        <div class="article-img">🍱</div>
+        <div class="article-content">
+          <span class="article-tag">Meal Prep</span>
+          <h2>A Beginner's Guide to Meal Prepping for a Healthier Week</h2>
+          <p>Save time and money while eating better. This step-by-step guide helps you start your first meal prep session today.</p>
+          <div class="article-footer">
+            <span>April 18, 2026</span>
+            <strong>Read More &rarr;</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article 13 -->
+      <div class="article-card">
+        <div class="article-img">🌿</div>
+        <div class="article-content">
+          <span class="article-tag">Vegan Nutrition</span>
+          <h2>How to Get Complete Nutrition on a Plant-Based Diet</h2>
+          <p>Learn how to balance proteins, monitor B12, and build a nutrient-dense plate without animal products.</p>
+          <div class="article-footer">
+            <span>April 14, 2026</span>
+            <strong>Read More &rarr;</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article 14 -->
+      <div class="article-card">
+        <div class="article-img">🏃</div>
+        <div class="article-content">
+          <span class="article-tag">Sports Nutrition</span>
+          <h2>What to Eat Before and After a Workout for Maximum Results</h2>
+          <p>Optimize your performance and recovery with the right balance of carbs and protein before and after you hit the gym.</p>
+          <div class="article-footer">
+            <span>April 10, 2026</span>
+            <strong>Read More &rarr;</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article 15 -->
+      <div class="article-card">
+        <div class="article-img">🧘</div>
+        <div class="article-content">
+          <span class="article-tag">Mindset</span>
+          <h2>Mindful Eating: How Slowing Down Can Transform Your Diet</h2>
+          <p>Learn the science of satiety and how paying full attention to your food can reduce overeating and improve your relationship with food.</p>
+          <div class="article-footer">
+            <span>April 6, 2026</span>
+            <strong>Read More &rarr;</strong>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer>
+    <a href="index.html" class="footer-logo">Food<span>Shazam</span></a>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="blog.html">Blog</a>
+      <a href="about.html">About</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+    <p class="copyright">&copy; 2026 FoodShazam AI. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
